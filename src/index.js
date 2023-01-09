@@ -7,8 +7,8 @@ function tiraLink (texto){
     const capturas = [...texto.matchAll(regex)]; // esses tres pontos espalha em array 
 
     const resultados  = capturas.map(capturas => ({[capturas[1]]: capturas[2]}))
-    console.log((resultados))
-
+   
+    return resultados.length !== 0 ? resultados : 'Sim link'  ;
 }
 
 
@@ -20,13 +20,15 @@ async function pegaArq (caminho){
     const encoding = 'utf-8'; 
     const texto = await fs.promises.readFile(caminho,encoding);
 
-    tiraLink(texto);
+   return tiraLink(texto);
     } catch(erro){
         trataErro(erro)
     }
 }
 
-pegaArq('./arquivos/texto.md');
+
+export default pegaArq;
+
 
 
 // ---------------- Comentarios --------------
