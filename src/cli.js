@@ -6,12 +6,12 @@ import listaValidade from "./http-valida.js";
 
 const caminho = process.argv;
 
-function imprimi (valida ,resultado,nome) {
+async function imprimi (valida ,resultado, nome = '') {
 
     if (valida){
     console.log(
         chalk.black.bgGreen('Lista Validada'), 
-        listaValidade(resultado));
+        await listaValidade(resultado));
     }else 
     console.log(
         chalk.yellow('Caminho do Arquivo'),
